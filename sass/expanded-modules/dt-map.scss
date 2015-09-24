@@ -1,0 +1,256 @@
+@import '../variables.scss';
+#dt-map {
+  display: none;
+  @media($dt) {
+    display: block;
+  }
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(228,230,237,1) 0%,rgba(207,208,214,1) 100%); /* W3C */
+  .container {
+    position: relative;
+    max-width: 1622px + (80px*2);
+    margin: 0 auto;
+    padding: 40px 80px;
+    height: 100%;
+    opacity: 0;
+    transition: opacity $ts;
+    &.__activated {
+      opacity: 1;
+    }
+    .holder {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      letter-spacing: -4px;
+      //overflow: hidden;
+      &:before, img.main-img {
+        letter-spacing: normal;
+        display:inline-block;
+        vertical-align: middle;
+      }
+      &:before {
+        position: relative;
+        height: 100%;
+        content: '';
+        width: 0;
+      }
+    }
+  }
+
+  img.main-img {
+    max-width: 99.9%;
+    max-height: 100%;
+  }
+  .apparatus {
+    position: absolute;
+
+    letter-spacing: normal;
+    text-align: left;
+    h1#top-copy {
+      position: absolute;
+      left: (90em/14);
+      top: 0;
+      > span {
+        color:$maroon;
+        text-align: center;
+        font-size: (19.9em/14);
+        text-transform:uppercase;
+        letter-spacing: .16em;
+        line-height:1em;
+      }
+    }
+
+    .dot {
+      position: absolute;
+      //width: (15em/14);
+      //height: (15em/14);
+      //background: white;
+      //border: 2px solid $maroon;
+      //border-radius: (3em/14);
+      display: block;
+      font-weight:normal;
+      width: (37em/14);
+      height:(36em/14);
+      background: url('#{$imgDirExpand}/star-icon.png') center center no-repeat;
+      background-size:100% 100%;
+      cursor: pointer;
+      // HOVER STATES
+      .info {
+        width: auto;
+        overflow: hidden;
+        transition: width 0s;
+        display: none;
+        > div {
+          //opacity: 0;
+          transition: opacity $ts ;
+        }
+
+      }
+      &.__hovering {
+        .info {
+          width:auto;
+          transition:width 0s;
+          > div {
+            opacity:1;
+            transition-delay: $ts;
+          }
+        }
+        .line {
+          transform:scaleX(1);
+        }
+      }
+      &.__not-hovering {
+        .info {
+          transition-delay: $ts;
+          > div {
+            transition-delay: 0s;
+          }
+        }
+      }
+      .line {
+        transform:scaleX(0);
+        transform-origin: center left;
+        transition: transform $ts;
+        left: (18em /14);
+        top: (18em / 14);
+        display: block;
+        position: absolute;
+        height: 1px;
+        background: $maroon;
+        width: (44em / 14);
+      }
+
+      &.right-align {
+        .info {
+          left: auto;
+          right: 0.8em;
+          text-align: right;
+        }
+        .line {
+          left: auto;
+          right: (18em / 14);
+        }
+        &.bottom {
+          .info {
+            left:auto;
+          }
+        }
+      }
+      &.bottom {
+        .line {
+          transform:scale(0,0);
+          transform-origin: top left;
+          width: 1px;
+          height: (44em / 14);
+        }
+        .info {
+          left:.8em;
+        }
+        &.__hovering {
+          .line {
+            transform:scale(1,1);
+          }
+        }
+      }
+      &.left-side {
+        .info {
+          left: auto;
+          right: 0;
+          padding: 0 (74em / 14) 0 0;
+          text-align: right;
+        }
+        .line {
+          left: auto;
+          right: (18em /14);
+          transform-origin:top right;
+        }
+
+      }
+      &.__hovering {
+        /*
+        .info {
+          width: 25em;
+          > div {
+            opacity: 1;
+          }
+          .line {
+            transform: scaleX(1);
+          }
+        }
+        */
+      }
+      &.__not-hovering {
+        /*
+        .info {
+          transition-delay: $ts*2;
+          > div {
+            transition-delay: 0s;
+          }
+          .line {
+            transition-delay:$ts;
+          }
+        }
+        */
+      }
+      .info {
+
+        position: absolute;
+        left: 0em;
+        top: .8em;
+        padding-left: (74em / 14);
+        white-space: nowrap;
+
+        line-height: (13.68 / 11);
+        .large {
+          font-size:12px;
+        }
+        .small {
+          font-size: 10px;
+        }
+
+      }
+      &#mcdonough {
+        .info {
+          padding: (64em / 14) 0 0 0;
+        }
+      }
+      &#fresno-rad {
+        .info {
+          padding: (130em / 14) 0 0 0;
+        }
+        .line {
+          height:(110em/14);
+        }
+      }
+      &#coronado {
+        .info {
+          padding:  0 0 0 (150em / 14);
+        }
+        .line {
+          width: (120em/14);
+        }
+      }
+      &#parklane {
+        .info {
+          padding-right:(85em/14);
+        }
+        .line {
+          width:(55em/14);
+        }
+      }
+      &#lake-washington {
+        .info {
+          padding-right:(125em/14);
+        }
+        .line {
+          width:(95em/14);
+        }
+      }
+    }
+  }
+}

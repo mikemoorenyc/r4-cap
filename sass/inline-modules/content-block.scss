@@ -1,0 +1,15 @@
+@import '../variables.scss';
+.content-block {
+  padding: 20px 6.25%;
+  @media($dt) {
+    position: absolute;
+    right: 0;
+    top: 72px;
+    background: white;
+    width: (100%/7)*2;
+    padding: 20px;
+    font-size: 13px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}

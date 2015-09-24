@@ -1,0 +1,45 @@
+
+.grey-bg {
+  @extend %ab-cover;
+  opacity: 0;
+  transition: opacity $ts;
+  backface-visibility: hidden;
+  .theImg {
+    @extend %ab-cover;
+    background-position: center center;
+    background-size: cover;
+    filter: url('#{$siteDir}/assets/imgs/gray.svg#grayscale');
+    filter: grayscale(100%);
+    //opacity: 0;
+    transition: opacity $ts;
+    backface-visibility: hidden;
+    &.__activated {
+    //  opacity: 1;
+    }
+  }
+  &.__activated {
+    opacity: 1;
+    &:after {
+      html.mix-blend-mode & {
+        //opacity: .7;
+
+      }
+
+    }
+  }
+  &:after {
+
+    html.mix-blend-mode & {
+
+      opacity: 0.7;
+      mix-blend-mode: hard-light;
+      transition: opacity $ts;
+      display: block;
+      content: '';
+      @extend %ab-cover;
+      background: #72737e;
+      backface-visibility: hidden;
+
+    }
+  }
+}

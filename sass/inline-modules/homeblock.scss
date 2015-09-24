@@ -1,0 +1,102 @@
+@import '../variables.scss';
+#home-block {
+  position: relative;
+  height: 100vh;
+  .theImg {
+    @media($dt) {
+      background-position: top left;
+    }
+  }
+  @media($dt) {
+    position: static;
+    height: auto;
+  }
+  .down {
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
+    margin-left: -(21px / 2);
+    //animation: arrowBounce 2s linear infinite;
+    display: block;
+    backface-visibility:hidden;
+    @media($dt) {
+      display: none;
+    }
+    svg {
+      display: block;
+      width: 21px;
+      height: 13px;
+    }
+  }
+  #home-headline {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 45px;
+    padding: 0 6.25%;
+    color: $maroon;
+    text-transform: uppercase;
+    font-size: 22px;
+    letter-spacing: .160em;
+    -webkit-backface-visibility:hidden;
+    @media($dt) {
+      width: auto;
+      left: auto;
+      right: 50%;
+      top: 180px;
+      padding: 0;
+      &:before {
+        display: block;
+        content:'';
+        position: absolute;
+        width: 188px;
+        height: 44px;
+        background: url('#{$siteDir}/assets/imgs/logo-svg.svg') center center no-repeat;
+        background-size: 100% 100%;
+        right: -115px;
+        top: -100px;
+      }
+    }
+  }
+
+  //INTRO animation
+  .down, #home-headline {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all $ts;
+    transition-delay: $ts;
+
+  }
+  &._background-loaded {
+    .down, #home-headline {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+}
+
+#history-block {
+  .head-block {
+    h1 {
+      text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+  }
+  .grey-bg {
+    display: none;
+    @media($dt) {
+      display: block;
+    }
+  }
+  @media($dt) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    display: none;
+  }
+
+
+}

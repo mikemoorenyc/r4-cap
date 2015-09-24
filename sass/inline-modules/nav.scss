@@ -1,0 +1,331 @@
+@import '../variables.scss';
+$mobile-nav-height: 60px;
+#loader-bar {
+  opacity: 0;
+}
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: white;
+  height: $mobile-nav-height;
+  z-index: 9;
+  box-shadow: 2px 3px 7.45px 0.56px rgba(black, .15);
+}
+#nav-buffer {
+  padding-top: $mobile-nav-height;
+}
+header {
+  a.mobile-logo {
+    display: block;
+    position: absolute;
+    left: 6.25%;
+    top: 14px;
+    width: 149px;
+    height: 33px;
+    background: url(#{$siteDir}/assets/imgs/logo-svg.svg) center center no-repeat;
+    background-size: 100% 100%;
+
+
+    @media($dt) {
+      transition: opacity $ts;
+      opacity: 1;
+      position: fixed;
+      z-index: 10;
+      bottom: 0;
+      top: auto;
+      left: 0;
+      width: (100%/7);
+      max-width: 210px;
+      height: 58px;
+      background-size: 60% auto;
+      /*
+      html.slug-home & {
+        opacity: 0;
+        visibility: hidden;
+      }
+      */
+    }
+
+  }
+  #menu-toggler {
+    display: block;
+    position: absolute;
+    right: 6.25%;
+    top: 5px;
+    margin-right: -12px;
+    height: 50px;
+    width: 50px;
+
+    padding-top: 18px;
+    //transition: all $ts;
+    @media($dt) {
+      display: none;
+    }
+    &:before, &:after {
+      margin: 0 auto;
+      display: block;
+      content: '';
+      width: 22px;
+      height: 4px;
+      border-radius: 2px;
+      background: $maroon;
+      transition: all ($ts/1.5);
+      transform: translate3d(0,0,0);
+      transform-origin: top left;
+    }
+    &:after {
+      margin-top: 6px;
+      transform-origin: bottom left;
+    }
+    //MENU OPENED
+    html._nav-opened & {
+      /*top: 20px;
+      right: 22px;
+      width: 20px;
+      height: 20px;*/
+      &:before {
+        width: 24px;
+
+        transform: translate3d(4px, -3px,0) rotate(45deg) ;
+
+      }
+      &:after {
+
+        width: 24px;
+
+        transform:translate3d(4px,3px,0) rotate(-45deg) ;
+      }
+    }
+    &:after {
+      top: auto;
+      bottom: 0;
+    }
+  }
+}
+
+//MOBILE NAV
+html._nav-opened nav {
+  transform: translateY(0);
+  box-shadow: 2px 3px 7.45px 0.56px rgba(black, .35);
+  opacity: 1;
+  @media($dt) {
+    box-shadow: none;
+  }
+}
+nav, #archive-list {
+  position: fixed;
+  left: 0;
+  top: $mobile-nav-height;
+  width: 100%;
+  z-index: 8;
+  background: $maroon;
+  text-align: center;
+  //display: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  backface-visibility: hidden;
+  transform: translateY(-100%);
+  transform-origin: top center;
+  box-shadow: none;
+  transition: all $ts;
+  opacity: 0;
+  @media($dt) {
+    transform: none;
+    opacity: 1;
+  }
+
+  a {
+    color: white;
+    text-decoration: none !important;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+  > ul#main-nav {
+    margin: 0 auto;
+    width: 71.875%;
+    max-width: 230px;
+    padding: 30px 0 50px 0;
+    > li {
+      border-bottom: 1px solid rgba(white, .27);
+    }
+    a.title {
+      display: block;
+      font-size: 18px;
+      line-height: 62px;
+      &.sub-opener {
+        position: relative;
+        &:after {
+          display: block;
+          content: '';
+          position: absolute;
+          right: 16px;
+          top: 50%;
+          margin-top: -8px;
+          width: 14px;
+          height: 16px;
+          border: 1px solid transparent;
+          border-width: 8px 7px;
+          border-top-color: white;
+          @media($dt) {
+            display: none;
+          }
+        }
+        &._sub-opened {
+          &:after {
+            border-color: transparent transparent white transparent;
+            margin-top: -13px;
+          }
+        }
+      }
+    }
+    ul.sub-nav {
+      display: none;
+      > li {
+        &:last-child {
+          a {
+            padding-bottom: 15px;
+          }
+        }
+        > a {
+          display: block;
+          padding: 5px 0;
+        }
+      }
+    }
+  }
+}
+
+//NAV OPENED STYLES
+html._nav-opened {
+  overflow:hidden;
+}
+
+
+
+//////// DESKTOP NAVIGATION STYLES /////////////
+
+@media($dt) {
+  #nav-buffer {
+    display: none;
+  }
+  header {
+    position: static;
+    box-shadow: none;
+    background: none;
+    height: 0px;
+  }
+  nav {
+    a {
+      text-decoration: none !important;
+      display: block;
+    }
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    z-index: 9;
+    height: 58px;
+    display: block;
+    top: auto;
+    box-shadow: none;
+    overflow: visible;
+    > ul#main-nav {
+      width: 100%;
+      display: block;
+      padding: 0 0 0 0;
+      max-width: 100%;
+      text-align: left;
+      margin-left: percentage((100/7) / 100);
+      letter-spacing: -4px;
+      > li {
+        display: inline-block;
+        vertical-align: top;
+        letter-spacing: normal;
+        width: percentage((100/7) / 100);
+        text-align: center;
+        position: relative;
+        &._current {
+          > a.title {
+            background: $maroon;
+            color: white;
+          }
+          >a:before {
+          //  transform: scaleY(1);
+          }
+        }
+        &.__activated/*, html.no-touch &:hover*/ {
+          >a:before {
+            //transform: scaleY(1);
+          }
+          > a.title {
+            background: $maroon;
+            color: white;
+          }
+          > ul.sub-nav {
+            transform: translateY(0);
+          }
+        }
+        > a {
+          &:before {
+            display:block;
+            content: '';
+            position:absolute;
+            left: 0;
+            top: 0;
+            width:100%;
+            height:5px;
+            background:$maroon;
+            transform: scaleY(0);
+            transform-origin: top center;
+            transition:transform $ts;
+          }
+          &.title {
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 58px;
+            color: $maroon;
+            letter-spacing: .2em;
+            padding: 0 10px;
+            position: relative;
+            z-index: 2;
+            background: white;
+            transition: background-color $ts, color $ts;
+          }
+        }
+        > ul.sub-nav {
+          position: absolute;
+          z-index: 1;
+          bottom: 58px;
+          width: 100%;
+          background: rgba($maroon, .5);
+          display: block;
+          transform-origin: bottom center;
+          transform: translateY(100%);
+          transition: transform $ts;
+          > li {
+            border-top: 1px solid $off-white;
+            &:first-child {
+              border: 0;
+            }
+            a {
+              display: block;
+              line-height: 32px;
+              padding: 0 10px !important;
+              font-size: 10px;
+              font-weight: bold;
+              letter-spacing: .2em;
+              &:hover {
+                background: rgba($maroon, .5);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+}

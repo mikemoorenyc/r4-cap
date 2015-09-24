@@ -1,0 +1,95 @@
+@import '../variables.scss';
+#property-block, #property-block .carousel {
+  @media($dt) {
+    height: 100%;
+    position: relative;
+  }
+}
+#property-block {
+  .head-block {
+    @media($dt) {
+      z-index:1;
+    }
+  }
+}
+.property-gallery {
+  @media($dt) {
+    height: 100%;
+    position: relative;
+    .carousel {
+      opacity: 0;
+      transition: opacity $ts;
+      &.__activated {
+        opacity: 1;
+      }
+    }
+  }
+  .slide {
+    padding-bottom: 3px;
+    //opacity: 0;
+    transition:opacity $ts;
+    @media($dt) {
+      position: relative;
+      height: 100%;
+      padding: 0;
+    }
+    &.__activated {
+      opacity: 1;
+    }
+    img {
+      width: 100%;
+      @media($dt) {
+        display: none;
+      }
+    }
+    .inner {
+      position: relative;
+      @media($dt) {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-size: cover;
+      }
+    }
+    .caption {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      padding: 10px 3.75%;
+      width: 100%;
+      color: white;
+      background: rgba($maroon, .75);
+      font-size: 10px;
+      @media($dt) {
+        width: auto;
+        max-width: 100%;
+        padding: 15px 20px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+.carousel {
+  button {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -20px;
+    width: 30px;
+    height: 40px;
+    font-size: .001em;
+    background: url('#{$siteDir}/assets/imgs/btn-arrow-right.png');
+    cursor: pointer;
+    &.slick-disabled {
+      display: none !important;
+    }
+    &.slick-prev {
+      right: auto;
+      left: 20px;
+      background: url('#{$siteDir}/assets/imgs/btn-arrow-left.png');
+    }
+  }
+}

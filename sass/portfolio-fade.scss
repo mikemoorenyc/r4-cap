@@ -1,0 +1,11 @@
+@media($dt) {
+  .section {
+    opacity: 0;
+    transition: opacity $ts;
+    z-index: -1;
+    &.__activated {
+      z-index:1;
+      opacity: 1;
+    }
+  }
+}

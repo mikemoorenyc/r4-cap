@@ -1,0 +1,42 @@
+#property-block {
+  .navigation {
+    background: white;
+    padding: 30px 3.75%;
+    opacity: 0;
+    &.__activated {
+      opacity: 1;
+    }
+    a {
+      float: right;
+      font-weight: normal;
+      color: maroon;
+      font-size: 12px;
+      &.previous{
+        float: left;
+      }
+      > span {
+        display: inline-block;
+        vertical-align: middle;
+        &.copy {
+          margin: 0 5px;
+        }
+      }
+      .arrow {
+        svg {
+          display: block;
+          width: 10px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}
+#property-block {
+  .head-block {
+    height:auto;
+    min-height:72px;
+    h1 {
+      padding:15px 0;
+    }
+  }
+}

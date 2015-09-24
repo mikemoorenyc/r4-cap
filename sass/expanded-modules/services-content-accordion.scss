@@ -1,0 +1,21 @@
+@import '../variables.scss';
+#service-list .content-block {
+  @media($dt) {
+    h3._accordionized {
+      font-weight: bold;
+      cursor: pointer;
+      &:after {
+        content: ' +';
+      }
+      &.__opened {
+        &:after {
+          content: ' -';
+        }
+      }
+    }
+    .accordion-container {
+      display: none;
+      margin-bottom: 1em;
+    }
+  }
+}

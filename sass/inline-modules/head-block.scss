@@ -1,0 +1,68 @@
+@import '../variables.scss';
+$hbh: 86px;
+$dhbh: 72px;
+.head-block {
+  height: $hbh;
+  letter-spacing: -4px;
+  background: $maroon;
+  color: white;
+  padding: 0 6.25%;
+  position: relative;
+  @media($dt) {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: (100%/7)*2;
+    height: $dhbh;
+    padding: 0 20px;
+
+  }
+  &.with-close {
+    padding-right: 55px;
+  }
+  a.close {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -10px;
+    svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+      * {
+        stroke-width: 3;
+        @media($dt) {
+          stroke-width: 1;
+        }
+      }
+    }
+  }
+  &:before, h1 {
+    display: inline-block;
+    vertical-align: middle;
+    letter-spacing: normal;
+  }
+  &:before {
+    content: '';
+    height: $hbh;
+    width: 0;
+    @media($dt) {
+      height: $dhbh;
+    }
+  }
+  h1 {
+    font-size: 18px;
+    letter-spacing: .06em;
+    @media($dt) {
+      font-size: 17px;
+    }
+    > span {
+      display: block;
+      &.sub {
+        font-size: .66em;
+      }
+    }
+  }
+
+}

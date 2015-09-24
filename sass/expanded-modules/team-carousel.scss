@@ -1,0 +1,11 @@
+@import '../variables.scss';
+#team-carousel {
+  .grey-bg {
+    .theImg {
+      background-position: top right;
+      @media($dt) {
+        background-position: top center;
+      }
+    }
+  }
+}

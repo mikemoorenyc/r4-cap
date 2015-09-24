@@ -1,0 +1,23 @@
+/*
+
+	Theme Name: R4 Capital Wordpress Theme
+	Author: REAL ESTATE ARTS
+	Website: http://realestatearts.com
+	Version: 1
+	Description: Specially for R4 Capital
+
+	CONTENTS
+	-------------
+	- Global resets
+	- Global typography & layout rules
+	- Page styles
+	- Post styles
+	- General bits
+
+	- Media queries
+
+*/
+
+.sticky {}          /* DO NOT EDIT THIS */
+.gallery-caption {} /* THESE ARE USELESS */
+.bypostauthor {}    /* THEY ARE ONLY TO KEEP THEME CHECK HAPPY */

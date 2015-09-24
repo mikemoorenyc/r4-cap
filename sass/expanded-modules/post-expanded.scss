@@ -1,0 +1,62 @@
+@import '../variables.scss';
+#post-interior {
+  .dt-cat {
+    @media($dt) {
+      display: block;
+      position: absolute;
+      top: 90px;
+      left: 45px;
+      line-height: 26px;
+      font-size: 15px;
+      border-bottom: 1px solid $maroon;
+      color: $maroon;
+      text-transform: uppercase;
+    }
+  }
+  .post-header {
+    @media($dt) {
+      padding: 0 48px 1em 48px;
+      .date {
+        font-weight: normal;
+        margin-bottom: .5em;
+        color: $maroon;
+      }
+    }
+  }
+  .content-block {
+    @media($dt) {
+      padding: 0 48px 48px 48px;
+    }
+    img {
+      width: auto;
+      height: auto;
+      margin-bottom: 1.5em;
+    }
+    .wp-caption {
+      img {
+        margin: 0 auto;
+      }
+    }
+    .wp-caption {
+    //  width: auto !important;
+      margin-bottom: 1.5em;
+      max-width: 100%;
+    }
+    .alignleft, .alignright {
+      float: left;
+
+      max-width:50%;
+      margin: 0 10px 10px 0;
+    }
+    .alignright {
+      float:right;
+      margin: 0 0 10px 10px;
+    }
+    .wp-caption-text {
+      text-align: center;
+      padding: 5px 5px 0 5px;
+      font-size: 10px;
+      opacity: .75;
+    }
+  }
+}

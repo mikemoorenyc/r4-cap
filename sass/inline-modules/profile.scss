@@ -1,0 +1,25 @@
+@import '../variables.scss';
+#profile-image {
+  position:relative;
+  width: 100%;
+  height: 0;
+  padding-top: 76%;
+  @media($dt) {
+    padding: 0;
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+  .theImg {
+    background-position: center center;
+  }
+  &.actual-profile {
+    .theImg {
+      background-position: 12% 0;
+      @media($dt) {
+        background-position: 17% 0;
+      }
+    }
+  }
+}

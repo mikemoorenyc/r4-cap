@@ -1,0 +1,319 @@
+@import '../variables.scss';
+#mobile-news-header {
+  position:relative;
+  padding: 20px (100% / (320/13));
+  @media($dt) {
+    padding: 0;
+  }
+  h1 {
+    color: $maroon;
+    text-transform: uppercase;
+    letter-spacing:.06em;
+    font-size: 20px;
+    line-height:1;
+    @media($dt) {
+      display: none;
+    }
+  }
+  a.archive-toggler {
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -11px;
+    width: 22px;
+    height: 22px;
+    background: url(#{$siteDir}/assets/imgs/levels-icon.png) center center no-repeat;
+    background-size: 100% 100%;
+    right: (100% / (320/13));
+    @media($dt) {
+      display: none;
+    }
+  }
+}
+#news-section {
+  @media($dt) {
+    position: fixed;
+    left: (100% / 7);
+    top: 0;
+    bottom: 58px;
+    width: (100% / 7)* 6;
+  }
+  > .section {
+    padding-bottom: 20px;
+    opacity: 1;
+    overflow-x:auto;
+    .scroll-holder {
+      display: none;
+      @media($dt) {
+        display: block;
+        &._no-arrows {
+          display: none;
+        }
+        .scroll-arrow {
+          width: 20px;
+          height: 11px;
+
+          position: absolute;
+          z-index:10;
+          left: 50%;
+          margin-left: -10px;
+          top: 135px;
+          &.__disabled {
+            opacity: .25;
+          }
+          svg {
+            display: block;
+            width:20px;
+            height:11px;
+            path {
+              fill: $maroon;
+            }
+          }
+          &.scroll-arrow_more {
+            top: auto;
+            bottom: 45px;
+          }
+        }
+      }
+    }
+    @media($dt) {
+      padding: 0;
+      position:relative;
+      width: (100% / 3);
+      float: left;
+      height: 100%;
+      border-left: 2px solid white;
+      background: $almost-white;
+      overflow: hidden;
+      text-align: center;
+      padding-top: 180px;
+      &:before {
+        display: block;
+        white-space: nowrap;
+        position: absolute;
+        top: 90px;
+        left: 50%;
+        transform: translateX(-50%);
+        content: 'Recent Transactions';
+        padding: 0px 0 0 0;
+        margin-bottom: 65px;
+        line-height: 26px;
+        font-size: 15px;
+        display: inline-block;
+        border-bottom:1px solid $maroon;
+        color: $maroon;
+        text-transform: uppercase;
+      }
+      &#press-releases {
+        //left: (100% / 7) * 3;
+        &:before {
+          content: 'Press Releases';
+        }
+      }
+      &#press {
+      //  left: (100% / 7) * 5;
+        &:before {
+          content: 'Press';
+        }
+      }
+    }
+    > .inner{
+    //  opacity: 0;
+      transition: opacity $ts;
+      @media($dt) {
+        padding-left: 0 !important;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        bottom: 100px;
+        top: 180px;
+      }
+      &.__activated {
+        opacity: 1;
+      }
+      .spacer {
+      //  display:table-cell;
+        @media($dt) {
+          display: none;
+        }
+      }
+       .clip-block {
+          display:table-cell;
+          opacity: 0;
+          transition: opacity $ts;
+          &.__activated {
+            opacity: 1;
+          }
+          @media($dt) {
+            display: block;
+            &:last-child {
+              > .inner {
+                padding-bottom: 0;
+              }
+            }
+          }
+        > .inner {
+          width: 300px;
+          margin: 0 2.5px;
+          border: 1px solid $off-white;
+          position: relative;
+          @media($dt) {
+            margin: 0;
+            padding-bottom: 35px;
+            width: auto;
+            border: 0;
+
+          }
+        }
+        .category-header {
+          display: block;
+          line-height: 35px;
+          padding: 0 10px;
+          color: $maroon;
+          font-weight: normal;
+          text-decoration: none;
+          font-size: 18px;
+          @media($dt) {
+            display: none;
+          }
+        }
+        a.post-link {
+          display: block;
+          font-weight: normal;
+          text-decoration: none;
+          padding: 13px 10px;
+          background: $off-white;
+          text-transform: uppercase;
+          min-height: 125px;
+          @media($dt) {
+            background: none;
+            padding: 0 (100% / (340/35));
+            min-height: 0;
+          }
+          > span {
+            display: block;
+            &.date {
+              font-weight: bold;
+              font-size: 10px;
+              letter-spacing:.160em;
+              margin-bottom: 1em;
+            }
+            &.title {
+              font-size: 12px;
+              line-height: (16em/12);
+              letter-spacing:.06em;
+            }
+          }
+          &:hover {
+            color: $maroon;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+//ARCHIVE RENDERING
+#archive-list {
+  color: white;
+  //display: none;
+  position: fixed !important;
+  z-index: 7;
+  html.__page-loading & {
+    //top: 0;
+  }
+  html._archive-opened & {
+    transform: translateY(0);
+    opacity: 1;
+    @media($dt) {
+      box-shadow: none;
+    }
+  }
+  @media($dt) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: block;
+    max-height: 100% !important;
+    width: (100% / 7);
+    bottom: 58px;
+    box-shadow: none;
+    background: $off-white;
+    color: $maroon;
+  }
+  > .archive-toggler {
+    display: block;
+    position: absolute;
+    right: (100% / (320/13));
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    @media($dt) {
+      display: none;
+    }
+    svg {
+      display: block;
+      width:20px;
+      height:20px;
+      * {
+        stroke:white;
+        fill: white;
+        stroke-width:3;
+      }
+    }
+  }
+  > .inner {
+    margin: 0 auto;
+    width: 71.875%;
+    max-width: 230px;
+    padding: 30px 0 50px 0;
+    @media($dt) {
+      width: auto;
+      padding: 90px 0;
+    }
+    h3 {
+      display: block;
+      font-size: 18px;
+      line-height: 62px;
+      border-bottom: 1px solid rgba(white, .27);
+      text-transform: uppercase;
+      @media($dt) {
+        line-height: 26px;
+        font-size: 15px;
+        display: inline-block;
+        border-color: $maroon;
+      }
+    }
+    > ul {
+      @media($dt) {
+        margin: 65px auto 0 auto;
+        max-width: 85px;
+        border-top: 1px solid $maroon;
+      }
+    }
+    ul > li {
+      border-bottom: 1px solid rgba(white, .27);
+      padding: 10px 0;
+      &.current {
+        a {
+          font-weight: bold;
+        }
+      }
+      @media($dt) {
+        padding: 0;
+
+        border-color: $maroon;
+        a {
+          color: $maroon;
+          font-size: 12px;
+          line-height: 22px;
+          height: 20px;
+          display: block;
+        }
+      }
+    }
+  }
+}

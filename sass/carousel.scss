@@ -1,0 +1,140 @@
+.carousel-container {
+  > .carousel {
+     .slide {
+      position: relative;
+      padding-bottom: 3px;
+      > a {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-top: 43.43%;
+        visibility: hidden;
+        &.__activated {
+          visibility: visible;
+          .title {
+            opacity: 1;
+          }
+        }
+      }
+      .hover-state {
+        display: none;
+      }
+      .title {
+        position: absolute;
+        width: 48.75%;
+        right: 3.75%;
+        top: 0;
+        height: 100%;
+        text-align: center;
+        letter-spacing: -4px;
+        opacity: 0;
+        transition: opacity $ts;
+        //transition-delay: $ts;
+        color: $maroon;
+        -webkit-backface-visibility:hidden;
+
+        .copy {
+          font-size: 15px;
+          letter-spacing: .06em;
+          .sub {
+            font-weight: normal;
+            font-size: .8em;
+          }
+        }
+        &:before, .copy {
+          display: inline-block;
+          vertical-align: middle;
+          letter-spacing: normal;
+        }
+        &:before {
+          content:'';
+          position: relative;
+          height: 100%;
+          width: 0px;
+        }
+      }
+
+    }
+    //BUTTONS
+    button {
+      position: absolute;
+      right: 0px;
+      top: 50%;
+      margin-top: -25px;
+      width: 50px;
+      height: 50px;
+      font-size: .001em;
+      background: url('#{$siteDir}/assets/imgs/right-carousel.png');
+      cursor: pointer;
+      &.slick-disabled {
+        display: none !important;
+      }
+      &.slick-prev {
+        right: auto;
+        left: 0px;
+        background: url('#{$siteDir}/assets/imgs/left-carousel.png');
+      }
+    }
+  }
+  @media($dt) {
+    position: relative;
+    height: 100%;
+    >.carousel {
+      position: relative;
+      height: 100%;
+       .slide {
+        float: left;
+        position: relative;
+        height: 100%;
+        width: (100vw / 7);
+      //  border-right: 1px solid white;
+        > a {
+          position: absolute;
+          padding: 0;
+          height: 100%;
+          width: 100%;
+          border-right: 1px solid white;
+          .hover-state {
+            display: block;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba($maroon, .4);
+            -webkit-backface-visibility:hidden;
+            position: absolute;
+            opacity: 0;
+            transform: scaleY(0);
+            transform-origin: top center;
+            transition: all $ts;
+          }
+          .title {
+            width: 100%;
+            right: 0;
+            height: auto;
+            top: 10%;
+            padding: 0 20px;
+            .copy {
+              font-size: 12px;
+            }
+          }
+        }
+        html.no-touch & {
+          .title {
+            transition: color $ts;
+          }
+          &:hover {
+            .hover-state {
+              opacity: 1;
+              transform: scale(1);
+            }
+            .title {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}

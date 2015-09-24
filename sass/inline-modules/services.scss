@@ -1,0 +1,152 @@
+@import '../variables.scss';
+#services-image {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 76%;
+  @media($dt) {
+    position: absolute;
+    padding: 0;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+  .grey-bg.service {
+    display: none;
+    @media($dt) {
+      display: block;
+      opacity: 0;
+      transition: opacity $ts;
+      &.__service-activated {
+        opacity: 1;
+      }
+    }
+  }
+  h1 {
+    color: $maroon;
+    position: absolute;
+    left: 0;
+    top: 30px;
+    width: 100%;
+    padding: 0 6.25%;
+    font-size: 16px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    opacity: 0;
+    transition: opacity $ts;
+    transition-delay: $ts;
+    -webkit-backface-visibility:hidden;
+    @media($dt) {
+      left: (100%/7)*2;
+      width: (100% / 7)* 2.5;
+      top: 25%;
+      font-size: 20px;
+      line-height:1.7;
+      padding: 0;
+    }
+  }
+  &.__activated {
+    h1 {
+      opacity: 1;
+    }
+  }
+}
+
+#service-header {
+  @media($dt) {
+    display: none;
+  }
+}
+
+#service-list {
+  > ul > li {
+    opacity: 0;
+    &.__service-activated {
+      opacity: 1;
+    }
+    @media($dt) {
+      position: relative;
+      opacity: 0;
+      z-index:-1;
+      transition: opacity $ts;
+      display:none;
+      &.__service-activated {
+        opacity:1;
+        z-index:1;
+        display:block;
+      }
+    }
+  }
+  a.header {
+    display: block;
+    text-decoration: none;
+    line-height: 58px;
+    padding: 0 6.25%;
+    background: rgba($maroon,.5);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    border-bottom: 1px solid rgba(white, .27);
+    position: relative;
+    transition: background-color $ts;
+    @media($dt) {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 0 20px;
+      line-height: 72px;
+      height: 72px;
+      background: $maroon;
+      width: (100%/7)*2;
+      border: 0;
+      letter-spacing: .06em;
+      font-weight: normal;
+      text-transform: none;
+      cursor: default;
+    }
+    &._opened {
+      background-color: rgba($maroon, .75);
+      &:after {
+        border-color: transparent transparent white transparent;
+        margin-top: -13px;
+      }
+    }
+    &:after {
+      display: block;
+      content: '';
+      position: absolute;
+      right: 6.25%;
+      top: 50%;
+      margin-top: -6px;
+      width: 14px;
+      height: 16px;
+      border: 1px solid transparent;
+      border-width: 8px 7px;
+      border-top-color: white;
+      @media($dt) {
+        display: none;
+      }
+    }
+  }
+  .content-container {
+    //display: none;
+    transition: height $ts;
+    transform: translate3d(0,0,0);
+    &._closed {
+      height: 0 !important;
+      overflow: hidden;
+    }
+    &._height-catcher {
+      position: absolute;
+      opacity: 0;
+    }
+    &._opened {
+      display: block;
+    }
+    @media($dt) {
+      display: block;
+    }
+  }
+}
