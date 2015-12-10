@@ -68,9 +68,12 @@
 </li>
 -->
 
-<li class="contact">
-  <a href="<?php echo $homeURL;?>contact" class="title">Contact</a>
-
+<li class="contact with-sub">
+  <a href="<?php echo $homeURL;?>contact" class="title sub-opener">Contact</a>
+  <ul class="sub-nav no-style">
+    <li><a href="<?php echo $homeURL;?>contact">Info</a></li>
+    <li><a href="<?php echo $homeURL;?>careers">Careers</a></li>
+  </ul>
 </li>
 
 <li class="login">
