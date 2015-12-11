@@ -36,9 +36,7 @@ $pos = str_replace('_', ' ', $pos[0]['background-crop']);
     <span class="title">
       <?php the_title();?>
     </span>
-    <span class="sub">
-      <?php echo $title['title'];?>
-    </span>
+
   </h1>
 </div>
 
