@@ -42,6 +42,7 @@
     padding-bottom: 20px;
     opacity: 1;
     overflow-x:auto;
+    z-index:1;
     .scroll-holder {
       display: none;
       @media($dt) {
@@ -128,6 +129,8 @@
         width: 100%;
         bottom: 100px;
         top: 180px;
+        overflow-x: hidden;
+        overflow-y:auto;
       }
       &.__activated {
         opacity: 1;

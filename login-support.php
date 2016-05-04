@@ -42,7 +42,6 @@ add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 */
 function footer_copy() {
   ?>
-  <link rel="stylesheet" id="custom-login-css" href="<?php echo get_template_directory_uri();?>/css/main.css?ver=4.2.3" type="text/css" media="all">
 
 
   <?php

@@ -92,7 +92,7 @@ function clip_block_maker($id, $cat_name) {
 
 function arrowCreator() {
   ?>
-  <div class="scroll-holder">
+  <div class="scroll-holder _no-arrows">
   <div class="scroll-element_corner"></div>
   <div class="scroll-arrow scroll-arrow_less">
     <div class="svg">

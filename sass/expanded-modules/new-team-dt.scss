@@ -1,0 +1,113 @@
+@import '../variables.scss';
+#team-carousel {
+  .slide.callout {
+    display:none;
+  }
+}
+@media($dt) and (orientation: landscape){
+  #team-carousel {
+    background: $maroon;
+
+  }
+
+  #team-carousel > .carousel{
+    overflow-y:scroll;
+    overflow-x:hidden;
+    html.touch & {
+      -webkit-overflow-scrolling: touch;
+    }
+    .slide {
+      width:20%;
+      height: 33.33%;
+      padding:0;
+      &.show-scroll {
+        height: 32%;
+      }
+      > a {
+        border:0;
+        .title {
+          top:auto;
+          bottom: 0;
+          padding: 15px;
+          .copy {
+            color:white;
+            text-shadow: 0 0 4px rgba(0,0,0,.5);
+            .head {
+              font-size: 16px;
+            }
+            .sub {
+              font-size:14px;
+              font-weight:400;
+              &.long-title {
+                font-size:12px;
+              }
+            }
+          }
+
+        }
+        .grey-bg .theImg {
+
+          background-size:cover;
+          background-position: top center;
+        }
+        .hover-state {
+          html.touch & {
+            transform: scale(1);
+            opacity:1;
+            transition: none;
+            background: linear-gradient(to top, rgba(black,.4) 0%, rgba(black,0) 50%);
+          }
+
+        }
+        html.no-touch & {
+          .title {
+            opacity: 0;
+            transition: opacity $ts;
+            .copy {
+              text-shadow: 0 0 4px rgba($maroon, .5);
+            }
+          }
+          &:hover {
+            .title {
+              transition-delay: $ts/2;
+              opacity:1;
+            }
+          }
+        }
+      }
+      &.callout {
+        display:block;
+        width: 100%;
+        &.cwidth-4 {
+          width: 80%;
+        }
+        &.cwidth-3 {
+          width: 60%;
+        }
+        &.cwidth-2 {
+          width: 40%;
+        }
+        &.cwidth-1 {
+          width: 20%;
+          .text {
+            font-size: 14px;
+            line-height:1.5;
+            padding: 0 20px;
+          }
+        }
+        .text {
+          width: 100%;
+          line-height:1.8;
+          position:absolute;
+          top:50%;
+          left: 0;
+          padding: 0 40px;
+          font-size:20px;
+          color:white;
+          transform:translateY(-50%);
+          text-align:center;
+        }
+      }
+    }
+  }
+}

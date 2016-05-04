@@ -19,7 +19,13 @@ $args = array(
 $files_in_cat_query = new WP_Query($args);
 
 if ( $files_in_cat_query->have_posts() ) {
-  $team = $files_in_cat_query->get_posts()
+  $team = $files_in_cat_query->get_posts();
+  $calloutW = 5 - (count($team) % 5);
+  if(count($team)>15) {
+    $teamL = 'show-scroll';
+  } else {
+    $teamL = '';
+  }
   ?>
   <div id='team-carousel' class="carousel-container">
   <div class="carousel no-style clearfix">
@@ -27,7 +33,7 @@ if ( $files_in_cat_query->have_posts() ) {
   foreach($team as $t) {
       $tid = $t->ID;
       ?>
-      <div class="slide">
+      <div class="slide <?php echo $teamL;?>">
         <a href="<?php echo get_permalink($tid);?>">
 
 
@@ -49,7 +55,7 @@ if ( $files_in_cat_query->have_posts() ) {
         //GET DESKTOP IMAGE
 
         $carID = $title['carousel-image'];
-        $carURL =  wp_get_attachment_image_src($carID, 'full');
+        $carURL =  wp_get_attachment_image_src($carID, 'large');
         $carURL = $carURL[0];
 
         ?>
@@ -71,8 +77,15 @@ if ( $files_in_cat_query->have_posts() ) {
             <div class="head">
               <?php echo $t->post_title;?>
             </div>
-
-            <div class="sub">
+            <?php
+            //DETERMINE SUB LENGTH
+            if(strlen($title['title']) > 27) {
+              $longClass = 'long-title';
+            } else {
+              $longClass = '';
+            }
+            ?>
+            <div class="sub <?php echo $longClass;?>">
               <?php echo $title['title'];?>
             </div>
           </div>
@@ -83,6 +96,33 @@ if ( $files_in_cat_query->have_posts() ) {
 
       <?php
   }
+  ?>
+  <?php
+  //DETERMINE BOTTOM PHRASING
+  $showCallout = false;
+  if($calloutW < 5) {
+    $showCallout = true;
+  }
+  if(count($team) < 15) {
+    $showCallout = true;
+  }
+  if($showCallout == true) {
+    $calloutClass = 'cwidth-'.$calloutW;
+    if(count($team) < 11) {
+      $calloutClass = 'cwidth-full';
+    }
+    ?>
+    <div class="slide callout <?php echo $calloutClass;?> <?php echo $teamL;?>">
+      <div class="text">
+        R4 Capital's senior executive team has on average 23 years Housing Tax Credit experience.
+      </div>
+
+    </div>
+    <?php
+  }
+
+
+
   ?>
 </div>
 </div>

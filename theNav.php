@@ -1,3 +1,4 @@
+
 <header>
 <span id="menu-toggler" class="pointer"></span>
 <a href="<?php echo $homeURL;?>" class="mobile-logo"></a>
@@ -61,13 +62,18 @@
 
 </li>
 
-<!--
+
 <li class="news">
   <a href="<?php echo $homeURL;?>news" class="title">News</a>
 
 </li>
--->
+<li class="contact">
+  <a href="<?php echo $homeURL;?>contact" class="title">Contact</a>
 
+</li>
+
+
+<!--
 <li class="contact with-sub">
   <a href="<?php echo $homeURL;?>contact" class="title sub-opener">Contact</a>
   <ul class="sub-nav no-style">
@@ -75,6 +81,7 @@
     <li><a href="<?php echo $homeURL;?>careers">Careers</a></li>
   </ul>
 </li>
+-->
 
 <li class="login">
   <a href="http://r4cap.reportingcentral.net/" class="title" target="_blank">Log-In</a>

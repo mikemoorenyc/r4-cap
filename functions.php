@@ -107,8 +107,50 @@ function revcon_change_post_object() {
 
 add_action( 'admin_menu', 'revcon_change_post_label' );
 add_action( 'init', 'revcon_change_post_object' );
+/*
+add_action('admin_head', 'userhide');
+function userhide() {
+  ?>
+<style>
+#wpfooter {
+  display: none !important;
+
+}
+</style>
+  <?php
+  global $current_user;
+      get_currentuserinfo();
+      $useremail = ($current_user->user_email );
+      if(strpos($useremail,'realestatearts.com')=== false) {
+        ?>
+        <!-- HIDE EVERYTHING -->
+        <style>
+        #adminmenu > li#menu-plugins,  #adminmenu > li#menu-appearance, #adminmenu > li#toplevel_page_wck-page, #adminmenu > li#menu-settings{
+        	display:none;
+        }
 
 
+        </style>
 
+        <?php
+      }
+}
+*/
+function my_login_logo() { ?>
+    <style type="text/css">
+      .login h1 a {
+        display:none !important;
+      }
+        .login h1 {
+            width:188px;
+            height: 44px;
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/imgs/logo-svg.svg);
+            background-size:100% 100%;
+            margin: 25px auto 25px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
+include 'admin-check-off.php';
 ?>

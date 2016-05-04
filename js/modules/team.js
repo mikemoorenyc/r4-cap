@@ -1,5 +1,5 @@
 function runnerteam() {
-
+/*
   if(windoww >= dt) {
     $('.carousel .slide').width((windoww / 7));
   } else {
@@ -59,6 +59,6 @@ function runnerteam() {
       }
     }
   });
-
+*/
 
 }
